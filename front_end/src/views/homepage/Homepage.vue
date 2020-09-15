@@ -1,13 +1,15 @@
 <template>
   <div id="homepage">
-    这是首页
+    <rotation-chart></rotation-chart>
   </div>
 </template>
 
 <script>
+  import RotationChart from '../../components/content/rotation_chart/RotationChart'
   export default {
     name: "Homepage",
     components: {
+      RotationChart
     },
   };
 </script>

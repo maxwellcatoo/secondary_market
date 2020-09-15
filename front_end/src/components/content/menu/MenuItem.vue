@@ -5,7 +5,6 @@
 </template>
 
 <script>
-console.log(document.querySelector('div').style)
 export default {
   name: 'MenuItem',
   computed:{

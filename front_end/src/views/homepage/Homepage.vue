@@ -1,18 +1,30 @@
 <template>
   <div id="homepage">
-    <rotation-chart></rotation-chart>
+    <div id="content-header">
+      <home-rotation></home-rotation>
+      <goods-list></goods-list>
+      <pages></pages>
+    </div>
   </div>
 </template>
 
 <script>
-  import RotationChart from '../../components/content/rotation_chart/RotationChart'
+  import HomeRotation from '@/components/content/rotation_chart/HomeRotation'
+  import GoodsList from '@/components/content/goods/GoodsList'
+  import Pages from '../../components/common/page/Page'
+
   export default {
     name: "Homepage",
     components: {
-      RotationChart
+      HomeRotation,GoodsList,Pages
     },
   };
 </script>
 
 <style scoped>
+  body,html {
+    padding: 0;
+    margin: 0;
+    background-color: #F8F8F8;
+  }
 </style>

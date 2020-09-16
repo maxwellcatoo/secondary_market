@@ -30,11 +30,14 @@ export default {
       currentIndex: 1, //当前index
       scrolling: false, //是否正在滚动
       swiperStyle: {}, //用来保存滚动的一系列样式，如滚动位置、滚动时间等
+      totalWidth: 0,
     }
   },
   mounted() {
     setTimeout(() => {
       this.handleDom()
+      
+      this.setTransform()
       //轮播启动
       this.startTimer()
     }, 1000);
@@ -46,8 +49,8 @@ export default {
     startTimer() { //轮播启动
       this.playTimer = window.setInterval(() => {
         this.currentIndex++
-        this.scrollContent(-this.currentIndex * 900)
-      },4000) //数值先写死，后边再写成由props赋值过来的
+        this.scrollContent(-this.currentIndex * this.totalWidth)
+      },3000) //数值先写死，后边再写成由props赋值过来的
     },
     stopTimer() {
       window.clearInterval(this.playTimer)
@@ -59,7 +62,7 @@ export default {
       //0.设置正在滚动
       this.scrolling = true
       //1.开始滚动
-      this.swiperStyle.transition = 'transform 1000ms';
+      this.swiperStyle.transition = 'transform 300ms';
       this.setTransform(currentPosition);
       //2.判断滚动的位置，若滚动到最前或最后，则调整位置
       this.checkPosition()
@@ -75,20 +78,19 @@ export default {
         this.swiperStyle.transition = '0ms'
         if(this.currentIndex >= 4) { //图片一共有三张，三张前后补上第三张和第一张，用来调整轮播完一次后的转换
           this.currentIndex = 1;
-          this.setTransform(-this.currentIndex * 900) //900为轮播图的宽度
+          this.setTransform(-this.currentIndex * this.totalWidth) //900为轮播图的宽度
         }else if(this.currentIndex <= 0) {
           this.currentIndex = 3;
-          this.setTransform(-this.currentIndex * 900)
+          this.setTransform(-this.currentIndex * this.totalWidth)
         }
-      },1000)
-      
-      //
+      },300)
     },
     /**
      * 设置滚动位置
     */
     setTransform(position) {
-      this.swiperStyle.transfrom = `translate3d(${position}px, 0, 0)`;
+      this.swiperStyle.transform = `translate3d(${position}px, 0, 0)`;
+      // this.swiperStyle.transform = `translate3d(-1800px, 0, 0)`;
       //若要考虑到浏览器兼容性，也可在后面补充语句
     },
 
@@ -106,10 +108,12 @@ export default {
       swiperEl.insertBefore(cloneLast,swiperEls[0])
       swiperEl.appendChild(cloneFirst)
       
+      this.totalWidth = swiperEl.offsetWidth;
       this.swiperStyle = swiperEl.style;
-
       // 2.让swiper元素显示第一个元素
-      // this.setTransform(-this.currentIndex * 900)
+      this.setTransform(-this.totalWidth)
+      // console.log(this.setTransform)
+      // this.swiperStyle.transform = `translate3d(-1800px, 0, 0)`;
     }
   }
 }
@@ -117,14 +121,13 @@ export default {
 
 <style scoped>
   #rotation {
-    /* height: 500px; */
+    width: 85%;
+    float: left;
     position: relative;
     overflow: hidden;
-    width: 900px;
-    margin: 0px auto;
+    border-radius: 0 10px 0 0;
   }
   .swiper {
-    margin-top: 30px;
     display: flex;
   }
 </style>

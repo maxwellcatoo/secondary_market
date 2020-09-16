@@ -11,7 +11,7 @@ module.exports = {
             }
         }
     },
-    lintOnSave:false,  // 关闭eslint
+    lintOnSave:true,  // 关闭eslint
     productionSourceMap:true,  // 生产环境下css 分离文件
     devServer:{   // 配置服务器
         port:8081,

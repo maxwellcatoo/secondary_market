@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <menu-bar></menu-bar>
+    <!-- <div id='menu-space'></div> -->
     <router-view id="view"></router-view>
   </div>
 </template>
@@ -16,8 +17,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #view {
-  margin-top: 60px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 60px;
+  overflow: auto;
+  background-color: #f8f8f8;
 }
 </style>

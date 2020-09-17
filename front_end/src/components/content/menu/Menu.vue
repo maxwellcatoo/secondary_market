@@ -17,7 +17,7 @@
     <!-- 菜单栏右侧内容 -->
     <router-link to="login" tag="div">
       <div path='/login' id="login">
-        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg" alt="">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1666256797,972082711&fm=26&gp=0.jpg" alt="">
         <span>登录</span>
       </div>
     </router-link>
@@ -54,6 +54,7 @@ export default {
     line-height: 60px;
     background-color: #ffffff;
     box-shadow: 0 1px 1px 1px #e6e7e9;
+    font-size: 14.5px;
   }
   .logo {
     float: left;

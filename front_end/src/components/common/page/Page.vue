@@ -18,7 +18,7 @@ export default {
     return {
       pre: '<',
       next: '>',
-      pageCount: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],//一共有多少页是应该根据HomePage页的条件来查询有多少条数据，然后除以每页的数据数算出来，然后用props传过来的，这里因为没有数据，直接赋值
+      pageCount: 15,//一共有多少页是应该根据HomePage页的条件来查询有多少条数据，然后除以每页的数据数算出来，然后用props传过来的，这里因为没有数据，直接赋值
       pageIndex:0
     }
   },
@@ -111,6 +111,8 @@ export default {
     margin-left: 10px;
     display: inline-block;
     cursor: pointer;
+    background-color: #fff;
+    font-size: 12px;
   }
   .ellipsis {
     width: 30px;

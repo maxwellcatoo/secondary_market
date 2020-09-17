@@ -1,12 +1,11 @@
 <template>
   <div id="rotation">
-    <!-- 这里还要插入一个分类 -->
     <!-- 要轮播的图片 -->
     <div class="swiper">
-      <!-- <slot></slot> -->
-      <rotation-item v-for="(item,index) in imgSrc" :key="index">
+      <slot></slot>
+      <!-- <rotation-item v-for="(item,index) in imgSrc" :key="index">
         <img :src="require(`@/assets/rotation/${item}.jpg`)" alt="图片未正常显示">
-      </rotation-item>
+      </rotation-item> -->
     </div>
 
     <!-- 展示轮播位置的小图标 -->
@@ -17,16 +16,11 @@
 </template>
 
 <script>
-import RotationItem from './RotationChartItem'
 
 export default {
   name: 'RotationChart',
-  components: {
-    RotationItem
-  },
   data() {
     return {
-      imgSrc: ['first','second','third'],
       currentIndex: 1, //当前index
       scrolling: false, //是否正在滚动
       swiperStyle: {}, //用来保存滚动的一系列样式，如滚动位置、滚动时间等
@@ -121,7 +115,7 @@ export default {
 
 <style scoped>
   #rotation {
-    width: 85%;
+    width: calc(0.85 * 70vw);
     float: left;
     position: relative;
     overflow: hidden;
@@ -129,5 +123,16 @@ export default {
   }
   .swiper {
     display: flex;
+  }
+  #orderType {
+    position: absolute;
+    left: 15%;
+    top: calc(0.85 * 70vw / 1020 * 360);
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 0 0 10px 0;
+    font-size: 13px;
+    /* background-color: red; */
   }
 </style>

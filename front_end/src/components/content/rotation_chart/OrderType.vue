@@ -1,8 +1,5 @@
 <template>
-  <div id="home-rotation">
-    <classify></classify>
-    <rotation-chart></rotation-chart>
-    <div id="orderType">
+  <div id="orderType">
       <div class="orderType-school"><div>所有学校</div></div>
       <div>
         <div class="orderTypeItem" :class="{active:index===currentIndex}" v-for="(item,index) in orderTypeItem" :key="index">{{item.value}}
@@ -12,18 +9,12 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
-import Classify from './classify/Classify'
-import RotationChart from './RotationChart'
 
 export default {
-  name: 'HomeRotation',
-  components: {
-    Classify,RotationChart
-  },
+  name: 'OrderType',
   data() {
     return {
       currentIndex: 0,
@@ -66,40 +57,35 @@ export default {
 </script>
 
 <style scoped>
-  #home-rotation {
-    /* overflow: hidden; */
-    width: 70%;
-    height: 375px;
-    margin: 80px auto 0;
-    position: relative;
-    box-shadow: 1px 1px 10px 3px rgba(49, 50, 51, 0.1);
-    border-radius: 10px;
-    /* overflow: hidden; */
-  }
-  #orderType {
+   #orderType {
     position: absolute;
     left: 15%;
-    top: 300px;
+    top: calc(0.85 * 70vw / 1020 * 360);
     bottom: 0;
     right: 0;
     background-color: white;
     border-radius: 0 0 10px 0;
-    font-size: 14px;
+    font-size: 13px;
     /* background-color: red; */
   }
   .orderType-school {
+    position: relative;
+    top: 1vw;
     width: 100%;
     height: 30px;
   }
   .orderType-school>div {
-    width: 80px;
-    margin: 10px 50px;
+    width: 70px;
     text-align: center;
     border: 1px solid #ebeaec;
     border-radius: 2px;
     cursor: pointer;
+    margin-left: 2vw;
+    font-size: 14px;
   }
   #orderType>div:last-child {
+    position: absolute;
+    bottom: 0.35vw;
     width: 100%;
     height: 30px;
     text-align: center;

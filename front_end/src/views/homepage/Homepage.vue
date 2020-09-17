@@ -9,9 +9,9 @@
 </template>
 
 <script>
-  import HomeRotation from '@/components/content/rotation_chart/HomeRotation'
+  import HomeRotation from './childComponents/HomeRotation'
   import GoodsList from '@/components/content/goods/GoodsList'
-  import Pages from '../../components/common/page/Page'
+  import Pages from '@/components/common/page/Page'
 
   export default {
     name: "Homepage",

@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
   #goods-list {
-    width: 70%;
+    width: 70vw;
     margin: 20px auto 0;
     display: flex;
     justify-content: space-between;
@@ -44,6 +44,7 @@ export default {
     font-size: 12px;
     color: #93999f;
     box-shadow: 0px 0px 2px 2px rgba(49, 50, 51, 0.1);
+    background-color: #fff;
   }
   
   #goods-item>img {

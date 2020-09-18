@@ -72,6 +72,9 @@ export default {
   top: 0;
   bottom: 0;
   width: 210px;
+  text-indent: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* 验证码 */
@@ -90,6 +93,10 @@ export default {
   top: 0;
   bottom: 0;
   width: 210px;
+  text-indent: 5px;
+  outline: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 .verification>input:nth-of-type(2) {
   display: inline-block;
@@ -116,4 +123,30 @@ export default {
   font-size: 12px;
   color: #666;
 }
+
+  input[type=text]:hover {
+    border-color: #66afe9;
+  }
+  input[type=text]:focus {
+    border-color: #66afe9;
+    color: #666;
+    outline: 0;
+    text-indent: 5px;
+    box-shadow: 0 0 2px 1px rgba(102, 175, 233, 0.6);
+    border-radius: 5px;
+  }
+  input[type=text]::selection {
+    border-color: #66afe9;
+    text-indent: 10px;
+    outline: 0;
+    color: #666;
+    box-shadow: 0 0 2px 1px rgba(102, 175, 233, 0.6);
+  }
+  input[type=text]::-moz-selection {
+    border-color: #66afe9;
+    color: #666;
+    text-indent: 5px;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0,0,8px rgba(102, 175, 233, 0.6);
+  }
 </style>

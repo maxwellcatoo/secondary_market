@@ -1,6 +1,6 @@
 <template>
   <div id="release">
-    这个是发布页
+    <div>这个是求购页</div>
   </div>
 </template>
 

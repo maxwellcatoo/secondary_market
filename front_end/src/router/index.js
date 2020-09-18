@@ -6,7 +6,8 @@ Vue.use(Router)
 const Homepage = () => import('../views/homepage/Homepage.vue')
 const Purchase = () => import('../views/purchase/Purchase.vue')
 const Discuss = () => import('../views/discuss/Discuss.vue')
-const Release = () => import('../views/release/Release.vue')
+const ReleaseBuy = () => import('../views/release/ReleaseBuy.vue')
+const ReleaseGoods = () => import('../views/release/ReleaseGoods.vue')
 const School = () => import('../views/school/School.vue')
 const Login = () => import('../views/login/Login.vue')
 
@@ -30,9 +31,14 @@ const routes = [
     component: Discuss
   },
   {
-    path: '/release',
-    name: 'Release',
-    component: Release
+    path: '/release_buy',
+    name: 'ReleaseBuy',
+    component: ReleaseBuy
+  },
+  {
+    path: '/release_goods',
+    name: 'ReleaseGoods',
+    component: ReleaseGoods
   },
   {
     path: '/school',

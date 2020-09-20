@@ -10,6 +10,7 @@ const ReleaseBuy = () => import('../views/release/ReleaseBuy.vue')
 const ReleaseGoods = () => import('../views/release/ReleaseGoods.vue')
 const School = () => import('../views/school/School.vue')
 const Login = () => import('../views/login/Login.vue')
+const UserInfo = () => import('../views/userInfo/UserInfo.vue')
 
 const routes = [
   {
@@ -49,6 +50,47 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/user_info',
+    name: 'UserInfo',
+    component: UserInfo,
+    children: [
+      {
+        path: '',
+        redirect: '/user_info/info'
+      },
+      {
+        path: 'info',
+        component: () => import('../views/userInfo/views/Info.vue')
+      },
+      {
+        path: 'goods',
+        component: () => import('../views/userInfo/views/Goods.vue')
+      },
+      {
+        path: 'release',
+        component: () => import('../views/userInfo/views/Release.vue')
+      },
+      {
+        path: 'connection',
+        component: () => import('../views/userInfo/views/Connection.vue'),
+        children: [
+          {
+            path: '',
+            redirect: '/user_info/connection/sell'
+          },
+          {
+            path: 'sell',
+            component: () => import('../views/userInfo/views/ConnectionSell.vue')
+          },
+          {
+            path: 'release',
+            component: () => import('../views/userInfo/views/ConnectionRelease.vue')
+          }
+        ]
+      }
+    ]
   }
 ]
 

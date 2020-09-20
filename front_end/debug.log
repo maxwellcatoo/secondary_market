@@ -1,0 +1,2 @@
+[0920/001343.605:ERROR:process_reader_win.cc(123)] NtOpenThread: {无法访问} 过程已请求访问一对象，但未给访问权限。 (0xc0000022)
+[0920/001344.015:ERROR:exception_snapshot_win.cc(98)] thread ID 12988 not found in process

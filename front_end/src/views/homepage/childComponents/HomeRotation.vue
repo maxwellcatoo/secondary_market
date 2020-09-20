@@ -1,7 +1,7 @@
 <template>
   <div id="home-rotation">
     <!-- 分类列表 -->
-    <classify></classify>
+    <classify id="classify"></classify>
     <!-- 轮播图 -->
     <rotation-chart>
       <rotation-item v-for="(item,index) in imgSrc" :key="index">
@@ -26,8 +26,16 @@ export default {
   data() {
     return {
       imgSrc: ['first','second','third'],
+      classifyIndex: 0,
+      data:{}
+    }
+  },
+  methods: {
+    classifyItem(message) {
+      this.classifyIndex = message
     }
   }
+
 }
 </script>
 

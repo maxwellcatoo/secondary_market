@@ -1,12 +1,14 @@
 <template>
-  <div id="goods-list">
-    <goods-item v-for="(item,index) in goods" :key="index">
-      <img :src="item.imgSrc" alt="">
-      <div class="title">{{item.goodsTitle}}</div>
-      <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
-      <div class="descri">{{item.describe}}</div>
-      <div class="price"><div>￥{{item.price}}</div><div>{{item.school}}</div></div>
-    </goods-item>
+  <div>
+    <div id="goods-list">
+      <goods-item v-for="(item,index) in goods" :key="index">
+        <img :src="item.imgSrc" alt="">
+        <div class="title">{{item.goodsTitle}}</div>
+        <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
+        <div class="descri">{{item.describe}}</div>
+        <div class="price"><div>￥{{item.price}}</div><div>{{item.school}}</div></div>
+      </goods-item>
+    </div>
   </div>
 </template>
 
@@ -20,9 +22,11 @@ export default {
   },
   data() {
     return {
-      goods:[{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/05/09/5eb68e4492f77.png',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/23/5e7801934da92.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/17/5e7055632fc54.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/03/5e5e155fe2e94.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/02/29/5e5a7cde23b12.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/02/22/5e50098a3cf9f.jpeg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'}],
-      message: 'xiaoxi'
+      
     }
+  },
+  props: {
+    goods: Array
   }
 }
 </script>
@@ -43,7 +47,7 @@ export default {
     overflow: hidden;
     font-size: 12px;
     color: #93999f;
-    box-shadow: 0px 0px 2px 2px rgba(49, 50, 51, 0.1);
+    box-shadow: 0 0 10px 3px rgba(49, 50, 51, 0.1);
     background-color: #fff;
   }
   

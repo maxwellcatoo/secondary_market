@@ -28,13 +28,13 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
+    setTimeout(() => {  //这里加setTimeout会存在一个问题，即当你快速点击有轮播图的页面而后快速点击其他页面时，会在前端的console.log报错，报错信息是handleDom函数中swiperEl并未获取到，所以不能使用swipeerEl.getElement来操作。原因是点击到该页面时，在页面加载完成后的500ms后，会执行setTimeout中函数，而此时已经跳转到其他页面了，所以会报错。加这个延时是为了防止页面未加载完成就开始轮播，从而导致轮播数据错误，但这样也会导致上面说的问题，把settimeout去掉就不会报错了。总之，这个就要看自己取舍了，这个报错信息对用户体验没有什么影响
       this.handleDom()
       
       this.setTransform()
       //轮播启动
       this.startTimer()
-    }, 1000);
+    }, 500);
   },
   methods: {
     /**

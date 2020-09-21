@@ -2,8 +2,8 @@
   <div id="homepage">
     <div id="content-header">
       <home-rotation></home-rotation>
-      <goods-list :goods='goods'></goods-list>
-      <pages></pages>
+      <goods-list :goods='goodsDataTransmit'></goods-list>
+      <pages @turnPage=turnPage :pageCounts='pageCounts'></pages>
     </div>
   </div>
 </template>
@@ -13,6 +13,8 @@
   import GoodsList from '@/components/content/goods/GoodsList'
   import Pages from '@/components/common/page/Page'
 
+  import {request} from '../../network/axios'
+
   export default {
     name: "Homepage",
     components: {
@@ -20,7 +22,34 @@
     },
     data() {
       return {
-        goods: [{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/05/09/5eb68e4492f77.png',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/23/5e7801934da92.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/17/5e7055632fc54.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/03/03/5e5e155fe2e94.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/02/29/5e5a7cde23b12.jpg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'},{imgSrc:'https://api.youzixy.com/public/uploads/attach/2020/02/22/5e50098a3cf9f.jpeg',goodsTitle:'衣品天成短袖',update:'2020-05-09',describe:'刚入手不久，全新',price:'49',school:'桂电'}]
+        goodsData: [],
+        goodsDataCount: 0,
+        pageCounts: 0,
+        pageStart: 0,
+        pageEnd: 1,
+        pageItems: 1
+      }
+    },
+    created() {
+      this.getGoodsData()
+    },
+    computed: {
+      goodsDataTransmit() {
+        return this.goodsData.slice(this.pageStart,this.pageEnd)
+      }
+    },
+    methods: {
+      getGoodsData() {
+        request().then(res => {
+          this.goodsData = res.data
+          this.goodsDataCount = this.goodsData.length
+          this.pageCounts = this.goodsDataCount/this.pageItems
+          // console.log(this.goodsData)
+        })
+      },
+      turnPage(page) {
+        this.pageStart = page * this.pageItems
+        this.pageEnd = (page+1) * this.pageItems
       }
     }
   };

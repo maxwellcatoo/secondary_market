@@ -5,7 +5,7 @@ let options = {
     //port:"3306",//可选，默认式3306
     user:"root",
     password:"123456",
-    database:"hospitalms"
+    database:"second_market"
 }
 let con = mysql.createConnection(options)
 con.connect(err => {

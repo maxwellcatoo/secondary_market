@@ -37,25 +37,109 @@ export default {
           ]
           },
       
-      {title:'书籍教材'},
+      {title:'书籍教材',
+        data:[
+          {title:'教科书',imgsrc:"book/teachbook.jpg"},
+          {title:'文学',imgsrc:"book/literature.jpg"},
+          {title:'小说',imgsrc:"book/novel.jpg"},
+          {title:'电子书',imgsrc:"book/ebook.png"},
+          {title:'教育考试',imgsrc:"book/test.jpg"},
+          {title:'动漫',imgsrc:"book/comic.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'衣鞋帽伞'},
+      {title:'衣鞋帽伞',
+        data:[
+          {title:'裙子',imgsrc:"shoes/skirt.jpg"},
+          {title:'裤子',imgsrc:"shoes/pants.jpg"},
+          {title:'衣服',imgsrc:"shoes/clothes.jpg"},
+          {title:'帽子',imgsrc:"shoes/hat.jpg"},
+          {title:'鞋子',imgsrc:"shoes/shoes.jpg"},
+          {title:'箱子',imgsrc:"shoes/box.jpg"},
+          {title:'包包',imgsrc:"shoes/package.jpg"},
+          {title:'雨伞',imgsrc:"shoes/umbrella.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'代步工具'},
+      {title:'代步工具',
+        data:[
+          {title:'自行车',imgsrc:"walking_tool/bicycle.jpg"},
+          {title:'旱冰鞋',imgsrc:"walking_tool/skates.jpg"},
+          {title:'平衡车',imgsrc:"walking_tool/balance_car.jpg"},
+          {title:'滑板',imgsrc:"walking_tool/skate.jpg"},
+          {title:'摩托车',imgsrc:"walking_tool/motorcycle.jpg"},
+          {title:'电动车',imgsrc:"walking_tool/electric_vehicle.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'体育健身'},
+      {title:'体育健身',
+        data:[
+          {title:'球类',imgsrc:"sports/ball.jpg"},
+          {title:'球拍',imgsrc:"sports/racket.jpg"},
+          {title:'运动鞋',imgsrc:"sports/sports_shoes.jpg"},
+          {title:'运动装备',imgsrc:"sports/sports_equipment.jpg"},
+          {title:'健身器材',imgsrc:"sports/body_building.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'家用电器'},
+      {title:'家用电器',
+        data:[
+          {title:'电磁炉',imgsrc:"electric_appliance/electromagnetic_furnace.jpg"},
+          {title:'洗衣机',imgsrc:"electric_appliance/washing_machine.jpg"},
+          {title:'冰箱',imgsrc:"electric_appliance/icebox.jpg"},
+          {title:'风扇',imgsrc:"electric_appliance/fan.jpg"},
+          {title:'电饭煲',imgsrc:"electric_appliance/race_cooker.jpg"},
+          {title:'豆浆机',imgsrc:"electric_appliance/milk_machine.jpg"},
+          {title:'电吹风',imgsrc:"electric_appliance/hair_direr.jpg"},
+          {title:'音响',imgsrc:"electric_appliance/sound.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          
+          ]},
       
-      {title:'日常用品'},
+      {title:'日常用品',
+        data:[
+          {title:'化妆护肤',imgsrc:"life_user/cosmetics.jpg"},
+          {title:'小工具',imgsrc:"life_user/small_tools.jpg"},
+          {title:'学习用品',imgsrc:"life_user/study.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'虚拟产品'},
+      {title:'虚拟产品',
+        data:[
+          {title:'游戏周边',imgsrc:"fictitious/game_arounds.jpg"},
+          {title:'充值卡',imgsrc:"fictitious/card.jpg"},
+          {title:'各类账号',imgsrc:"fictitious/username.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'手工设计'},
+      {title:'手工设计',
+        data:[
+          {title:'书法',imgsrc:"manual/calligraphy.jpg"},
+          {title:'绘画',imgsrc:"manual/painting.jpg"},
+          {title:'工艺品',imgsrc:"manual/atrs_and_crfts.jpg"},
+          {title:'服装设计',imgsrc:"manual/clothing_design.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'乐器'},
+      {title:'乐器',
+        data:[
+          {title:'吉他',imgsrc:"musical_instruments/guitor.jpg"},
+          {title:'钢琴',imgsrc:"musical_instruments/piano.jpg"},
+          {title:'尤克里里',imgsrc:"musical_instruments/eurico.jpg"},
+          {title:'民族管弦',imgsrc:"musical_instruments/erhu.jpg"},
+          {title:'西洋管弦',imgsrc:"musical_instruments/west_erhu.jpg"},
+          {title:'打击乐器',imgsrc:"musical_instruments/drum_kit.jpg"},
+          {title:'乐器配件',imgsrc:"musical_instruments/musical_acc.jpg"},
+          {title:'电脑音乐',imgsrc:"musical_instruments/computer_music.jpg"},
+          {title:'口琴/竖笛',imgsrc:"musical_instruments/harmonica.jpg"},
+          {title:'电子琴',imgsrc:"musical_instruments/electronic_organ.jpg"},
+          {title:'其他',imgsrc:"shuma/others.png"},
+          ]},
       
-      {title:'其他'}],
+      {title:'其他',
+        data:[{title:'其他',imgsrc:"shuma/others.png"},
+          ]
+      }],
       classifyIndex: 0
     }
   },

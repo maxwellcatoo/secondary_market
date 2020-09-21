@@ -2,12 +2,12 @@
   <div id="pages">
     <div class="pre">{{pre}}</div>
 
-    <div class="page" :class="{active: index===pageIndex}" v-for="(item,index) in 15"
-     v-show="index===0||index===14||index>pageIndex-3&&index<pageIndex+3" :key="item">{{item}}</div>
+    <div class="page-index" :class="{active: index===pageIndex}" v-for="(item,index) in pageCounts"
+     v-show="index===0||index===pageCounts-1||index>pageIndex-3&&index<pageIndex+3" :key="index">{{item}}</div>
 
     <div class="next">{{next}}</div>
     <div style="display:none" title="向前5页" class="ellipsis">...</div>
-    <div style="display:inline-block" title="向后5页" class="ellipsis">...</div>
+    <div style="display:none" title="向后5页" class="ellipsis">...</div>
   </div>
 </template>
 
@@ -18,13 +18,22 @@ export default {
     return {
       pre: '<',
       next: '>',
-      pageCount: 15,//一共有多少页是应该根据HomePage页的条件来查询有多少条数据，然后除以每页的数据数算出来，然后用props传过来的，这里因为没有数据，直接赋值
       pageIndex:0
     }
   },
+  props: {
+    pageCounts:{
+      type: Number,
+      default(){
+        return 1
+      }
+    }
+  },
   mounted() {
-    this.pageDl()
     this.elipsis()
+  },
+  updated() {
+    this.pageDl()
   },
   methods: {
     /**
@@ -33,7 +42,7 @@ export default {
     */
     pageDl() {
       //0.获取元素
-      let pageEls = document.getElementsByClassName('page')
+      let pageEls = document.getElementsByClassName('page-index')
       let pre = document.getElementsByClassName('pre')
       let next = document.getElementsByClassName('next')
       //1.所有数字页数赋予点击后翻到对应页的功能
@@ -52,7 +61,7 @@ export default {
       }
       //3.向后一页
       next[0].onclick = () => {
-        if(this.pageIndex!==14){
+        if(this.pageIndex!==this.pageCounts-1){
           this.pageIndex++
           this.elipsis()
         }
@@ -60,7 +69,7 @@ export default {
       //4.将前翻五页和后翻五页的元素在加载完成时就插入到对应的位置，等到该显现出来时直接将其display设置为inlineblock，该消失时设置为none
       let ellipsis = document.getElementsByClassName('ellipsis')
       pageEls[0].parentElement.insertBefore(ellipsis[0],pageEls[3])
-      pageEls[0].parentElement.insertBefore(ellipsis[1],pageEls[14])
+      pageEls[0].parentElement.insertBefore(ellipsis[1],pageEls[this.pageCounts-1])
       //5.点击向前（后）翻五页则翻五页
       ellipsis[0].onclick = () => {
         this.pageIndex -= 5
@@ -84,11 +93,13 @@ export default {
       }else{
         arr[0].style.display='none'
       }
-      if(this.pageIndex<10){
+      if(this.pageIndex<this.pageCounts-5){
         arr[1].style.display='inline-block'
       }else{
         arr[1].style.display='none'
       }
+
+      this.$emit('turnPage',this.pageIndex)
     }
   }
 }
@@ -101,7 +112,7 @@ export default {
     height: 100px;
     text-align: center;
   }
-  .page,.pre,.next {
+  .page-index,.pre,.next {
     width: 30px;
     text-align: center;
     height: 30px;

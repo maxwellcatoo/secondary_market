@@ -8,6 +8,7 @@ var session = require('express-session')
 
 var adminRouter = require('./routes/admin/adminRouter')
 var loginRouter = require('./routes/login/loginRouter')
+const homepageApi = require('./routes/api/ApiRouter')
 
 var app = express();
 //session设置
@@ -44,12 +45,7 @@ app.use('/admin',adminRouter);
 // 注册登录页
 app.use('/rl',loginRouter)
 
-
-// app.use('/iframe',(req,res) => {
-//   res.render('iframe.ejs',{
-//     title: 'iframe学习页'
-//   })
-// })
-
+// 提供前端数据信息
+app.use('/api',homepageApi)
 
 module.exports = app;

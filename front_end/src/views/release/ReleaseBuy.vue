@@ -2,26 +2,42 @@
   <div>
     <div id="release">
       <h3>发布求购</h3>
-      <form action="">
-        <div class="title"><div>标题</div><input type="text" placeholder="很重要，让别人对你的需求一目了然"></div>
-        <div class="easyInfo"><div>简介(可选)</div><textarea type="text" placeholder="让别人更清晰了解您的需求"></textarea></div>
-        <div class="price"><div>可接受价格</div><input type="text" placeholder="数字或文字，可接受的价格，如'100-150'之间"></div>
+      <form action="http://localhost:3000/api/homepage">
+        <div class="title"><div>标题</div><input name="title" type="text" placeholder="很重要，让别人对你的需求一目了然"></div>
+        <div class="easyInfo"><div>简介(可选)</div><textarea name="easyInfo" type="text" placeholder="让别人更清晰了解您的需求"></textarea></div>
+        <div class="price"><div>可接受价格</div><input name="price" type="text" placeholder="数字或文字，可接受的价格，如'100-150'之间"></div>
         <div class="nav"><div>卖家标签</div></div>
-        <div class="nav-self"><input type="text" placeholder="自定义标签，最多四个字"><input type="button" value="添加"></div>
+        <div class="nav-self"><input name="navSelf" type="text" placeholder="自定义标签，最多四个字"><input type="button" value="添加"></div>
         
-        <div class="weichart"><div>微信</div><input type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
-        <div class="phone"><div>手机</div><input type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
-        <div class="qq"><div>Q&nbsp;Q</div><input type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
-        <div class="imgonload"><div>图片上传</div><div><input type="file"></div></div>
+        <div class="weichart"><div>微信</div><input name="weichart" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
+        <div class="phone"><div>手机</div><input name="phone" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
+        <div class="qq"><div>Q&nbsp;Q</div><input name="qq" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
+        <div class="imgonload"><div>图片上传</div><div><input name="imgonload" type="file"></div></div>
         <div class="submit"><input type="submit" value="提交"></div>
       </form>
+        <button id="submit">按钮</button>
     </div>
   </div>
 </template>
 
 <script>
+import {request} from '../../network/axios'
+
   export default {
-    name: "Release"
+    name: "Release",
+    mounted() {
+      this.submit()
+    },
+    methods: {
+      submit() {
+        let submit = document.querySelector('#submit')
+        submit.onclick = () => {
+          request().then(res => {
+            console.log(res)
+          })
+        }
+      }
+    }
   };
 </script>
 
@@ -30,7 +46,6 @@
   #release {
     width: 50vw;
     margin: 40px auto;
-    /* border: 1px solid red; */
     background-color: #ffffff;
     text-align: center;
     font-size: 15px;
@@ -110,5 +125,10 @@
     color: white;
     background-color: #2d8cf0;
     border-radius: 5px;
+  }
+
+  #submit {
+    width: 50px;
+    height: 30px;
   }
 </style>

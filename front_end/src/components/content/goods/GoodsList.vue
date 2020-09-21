@@ -2,11 +2,11 @@
   <div>
     <div id="goods-list">
       <goods-item v-for="(item,index) in goods" :key="index">
-        <img :src="item.imgSrc" alt="">
-        <div class="title">{{item.goodsTitle}}</div>
+        <img :src="item.imgurl" alt="">
+        <div class="title">{{item.title}}</div>
         <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
         <div class="descri">{{item.describe}}</div>
-        <div class="price"><div>￥{{item.price}}</div><div>{{item.school}}</div></div>
+        <div class="price"><div>￥{{item.price}}</div><div>{{item.old_price}}</div></div>
       </goods-item>
     </div>
   </div>
@@ -36,7 +36,8 @@ export default {
     width: 70vw;
     margin: 20px auto 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-content: flex-start;
     flex-wrap: wrap;
   }
   #goods-item {

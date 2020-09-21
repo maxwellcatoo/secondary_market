@@ -53,7 +53,6 @@ const routes = [
   },
   {
     path: '/user_info',
-    name: 'UserInfo',
     component: UserInfo,
     children: [
       {

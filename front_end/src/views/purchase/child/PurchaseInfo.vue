@@ -2,15 +2,16 @@
   <div id="purchase-info">
     <div id="purchase-info-space"></div>
 
-    <purchase-info-item v-for="(item,index) in info" :key="index">
+    <purchase-info-item class='box' v-for="(item,index) in info" :key="index">
       <div class="user">
-      <img :src="item.imgSrc" alt=""><span>{{item.username}}</span><span>{{item.school}}</span><span>{{item.update}}</span>
+        <img :src="item.imgSrc?item.imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg'" alt=""><span>{{item.username}}</span><span>{{item.school}}</span><span>{{item.update}}</span>
       </div>
 
       <div class="title">{{item.title}}</div>
-      <div class="desc">{{item.describe}}</div>
+      <div class="desc">{{item.describes}}</div>
       <div class="phone">{{item.phone}}</div>
-      <div class="nav">{{item.nav}}</div>
+      <!-- <div class="nav">{{item.nav}}</div> -->
+      <img class=img :src="item.imgsrc?('http://localhost:3000/'+item.imgsrc):('')" alt="菜">
     </purchase-info-item>
     
   </div>
@@ -23,6 +24,11 @@ export default {
   name: 'PurchaseInfo',
   components: {
     PurchaseInfoItem
+  },
+  mounted() {
+    setTimeout(() => {
+      console.log(this.info)
+    }, 3000);
   },
   props: {
     info: {
@@ -48,6 +54,10 @@ export default {
   }
   #info-item>div {
     margin: 15px;
+  }
+
+  .box {
+    position: relative;
   }
   /* 第一行样式 */
   .user {
@@ -93,5 +103,12 @@ export default {
     text-align: center;
     font-size: 12px;
     color:#777;
+  }
+  .img {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    right: 10px;
+    top: 20px;
   }
 </style>

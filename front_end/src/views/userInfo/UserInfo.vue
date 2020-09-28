@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style scoped>
-  /* 不清楚为啥，这边用views的话，排版就乱了，是因为跟app.vue中的那个id名冲突了吗？但是这个scoped为啥不起作用呢 */
+  /* 不清楚为啥，这边用#view的话，排版就乱了，是因为跟app.vue中的那个id名冲突了吗？但是这个scoped为啥不起作用呢 */
   #views {
     width: calc(85vw - 2px);
     height: 100%;

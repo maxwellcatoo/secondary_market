@@ -2,11 +2,11 @@
   <div>
     <div id="goods-list">
       <goods-item v-for="(item,index) in goods" :key="index">
-        <img :src="item.imgurl" alt="">
+        <img :src="item.imgurl?item.imgurl:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1704354617,2285391646&fm=26&gp=0.jpg'" alt="">
         <div class="title">{{item.title}}</div>
         <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
         <div class="descri">{{item.describe}}</div>
-        <div class="price"><div>￥{{item.price}}</div><div>{{item.old_price}}</div></div>
+        <div class="price"><div>￥{{item.price}}</div><div>{{item.school}}</div></div>
       </goods-item>
     </div>
   </div>
@@ -75,25 +75,28 @@ export default {
     display: inline-block;
   }
   .date>div:last-child {
-    margin-left: 30px;
+    float: right;
+    margin-right: 10px;
   }
   .descri {
     width: 100%;
     height: 24px;
   }
   .price {
+    position: relative;
     display: inline-block;
     width: 100%;
     height: 24px;
   }
   .price>div:first-child {
-    display: inline-block;
+    float: left;
+    margin-left: 0;
     color: #f2148e;
   }
   .price>div:last-child {
-    display: inline-block;
-    margin-left: 115px;
     color: #2d8cf0;
+    margin-right: 10px;
+    float: right;
   }
   .title,.date,.descri,.price {
     padding: 0 5px;

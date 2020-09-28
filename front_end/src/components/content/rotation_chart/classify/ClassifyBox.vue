@@ -5,8 +5,10 @@
     </div>
     <div class="item-box">
       <classify-box-item class="box-item" v-for="(item,index) in classifyInfo.data" :key="index">
-        <img :src="require(`@/assets/classify/${item.imgsrc}`)" alt="菜">
-        <span>{{item.title}}</span>
+        <div @click="setClassifyBoxId(classifyInfo.classifyid,item.classifyid)" >
+          <img :src="require(`@/assets/classify/${item.imgsrc}`)" alt="菜">
+          <span>{{item.title}}</span>
+        </div>
       </classify-box-item>
     </div>
   </div>
@@ -20,12 +22,24 @@ export default {
   components: {
     ClassifyBoxItem
   },
+  data() {
+    return {
+    }
+  },
   props: {
     classifyInfo:{
       type: Object,
       default(){
         return {}
       }
+    }
+  },
+  methods: {
+    //将分类数据中的classifyInfo.classifyid和classifyInfo.data.classifyid拼接起来
+    setClassifyBoxId(a,b) {
+      this.$bus.$emit('getClassifyId',a+b)
+      console.log(a+b)
+      // this.$store.commit('getClassifyId',{a,b})
     }
   }
 }
@@ -81,7 +95,7 @@ export default {
   .box-item:hover {
     color: #2d8cf0;
   }
-  .box-item>img {
+  .box-item>div>img {
     width: 100%;
     /* height: 100%;  */
     /* height: 50px;

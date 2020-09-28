@@ -95,5 +95,6 @@ const routes = [
 
 export default new Router({
   routes,
+  base:'/new/',
   mode: 'history' //使用history模式
 })

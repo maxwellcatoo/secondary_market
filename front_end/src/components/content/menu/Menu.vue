@@ -10,9 +10,9 @@
       <menu-item path='purchase' class="menu-item item-left"><span>求购</span></menu-item>
     </router-link>
 
-    <router-link to="/discuss" tag="div">
+    <!-- <router-link to="/discuss" tag="div">
       <menu-item path='discuss' class="menu-item item-left"><span>校园论坛</span></menu-item>
-    </router-link>
+    </router-link> -->
 
     <!-- 菜单栏右侧内容 -->
       <!-- 根据用户是否登录展示不同的内容 -->

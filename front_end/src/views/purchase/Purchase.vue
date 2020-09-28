@@ -1,13 +1,15 @@
 <template>
   <div id="purchase">
-    <purchase-info :info=info></purchase-info>
-    <pages></pages>
+    <purchase-info :info=dataInfoTo></purchase-info>
+    <pages v-show="isLoad" :pageCounts='pageCounts' @turnPage=turnPage></pages>
   </div>
 </template>
 
 <script>
   import PurchaseInfo from './child/PurchaseInfo'
   import Pages from '@/components/common/page/Page'
+
+  import {purchase} from '../../network/purchase'
 
   export default {
     name: "Purchase",
@@ -16,7 +18,32 @@
     },
     data() {
       return {
-        info: [{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'},{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'},{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'},{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'},{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'},{imgSrc:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1625322132,835120392&fm=26&gp=0.jpg',username:'热心网友',school:'华北水利水电大学',update:'2020-01-06',title:'二手手机',describe:'小米、华为、苹果',phone:'手机：13279289285',nav:'原装正品'}]
+        dataInfo: [],
+        isLoad: false,
+        pageStart: 0,
+        pageItems: 2,
+        pageCounts: 0
+      }
+    },
+    created() {
+      this.getPurchaseData()
+    },
+    computed: {
+      dataInfoTo() {
+        return this.dataInfo.slice(this.pageStart,this.pageStart+this.pageItems)
+      }
+    },
+    methods: {
+      getPurchaseData() {
+        purchase().then(res => {
+          this.dataInfo = res.data
+          this.isLoad = true
+          this.pageCounts = Math.ceil(res.data.length/this.pageItems)
+          console.log(this.pageCounts,this.dataInfo.length)
+        })
+      },
+      turnPage(page) {
+        this.pageStart = page*this.pageItems
       }
     }
   };

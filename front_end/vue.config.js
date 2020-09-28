@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-    publicPath:'/',    // 公共路径
+    publicPath:'/new/',    // 公共路径
     outputDir: process.env.NODE_ENV === "development" ? 'devdist' : 'dist', // 不同的环境打不同包名
     css: {  // 一次配置，全局使用，这个scss 因为每个文件都要引入
         loaderOptions: {

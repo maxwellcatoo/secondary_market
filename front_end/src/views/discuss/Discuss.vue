@@ -5,6 +5,7 @@
 
     <!-- 论坛 -->
     <discuss-list></discuss-list>
+    <div>{{this.$store.state.classifyId}}</div>
   </div>
 </template>
 

@@ -2,7 +2,9 @@
   <div id="app">
     <menu-bar></menu-bar>
     <!-- <div id='menu-space'></div> -->
-    <router-view id="view"></router-view>
+    <keep-alive>
+      <router-view id="view"></router-view>
+    </keep-alive>
   </div>
 </template>
 

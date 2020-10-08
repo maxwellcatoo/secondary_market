@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <menu-bar></menu-bar>
-    <!-- <div id='menu-space'></div> -->
-    <keep-alive>
+    <menu-bar v-show="isError"></menu-bar>
+    <keep-alive exclude="GoodsInfo">
       <router-view id="view"></router-view>
     </keep-alive>
   </div>
@@ -15,6 +14,31 @@ export default {
   name: 'App',
   components: {
     MenuBar
+  },
+  data() {
+    return {
+      isError: true
+    }
+  },
+  created() {
+    this.$store.commit('changeIsLogin',window.localStorage.getItem('phone'))
+    this.$store.commit('changeImgsrc',window.localStorage.getItem('imgsrc'))
+  },
+  updated() {
+    this.errorBox()
+  },
+  methods: {
+    //判断当前页面是否是404，若是，则隐藏菜单栏，全部显示404界面
+    errorBox() {
+      let view = document.getElementById('view')
+      if(window.location.pathname === '/new/404') {
+        this.isError = false
+        view.style.top = '0'
+      }else {
+        this.isError = true
+        view.style.top = '60px'
+      }
+    }
   }
 }
 </script>

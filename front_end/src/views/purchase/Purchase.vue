@@ -39,7 +39,7 @@
           this.dataInfo = res.data
           this.isLoad = true
           this.pageCounts = Math.ceil(res.data.length/this.pageItems)
-          console.log(this.pageCounts,this.dataInfo.length)
+          // console.log(this.pageCounts,this.dataInfo.length)
         })
       },
       turnPage(page) {

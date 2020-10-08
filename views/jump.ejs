@@ -6,11 +6,20 @@
   <title>发布成功</title>
 </head>
 <body>
-  发布成功，5秒后跳转到发布信息页
+  <p>发布成功，<span id="time">5</span>秒后跳转到发布信息页</p>
   <script>
-    setTimeout(() => {
-      window.onload('http://localhost:8081/homepage')
-    }, 3000);
+    let time = document.getElementById('time')
+    let seconds = 5
+    setInterval(() => {
+      if(seconds <= 0){
+        location.assign('http://localhost:8081/new')
+      }else {
+        time.textContent = --seconds
+      }
+    }, 1000);
+
+    
+      // location.assign('http://localhost:8081/new/')
   </script>
 </body>
 </html>

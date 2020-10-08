@@ -5,7 +5,7 @@
 
         <div class="phone">
           <div>手机号</div>
-          <input type="text" placeholder="请输入手机号">
+          <input id="phone" type="text" placeholder="请输入手机号">
         </div>
         <div class="verification">
           <div>验证码</div>
@@ -13,7 +13,7 @@
           <input type="button" value="获取验证码">
         </div>
         <div class="login">
-          <input type="button" value="登录">
+          <input id="login_button" type="button" value="登录">
         </div>
         <div class="explain">首次登录将自动注册为平台用户</div>
       </div>
@@ -22,8 +22,40 @@
 </template>
 
 <script>
+import {login} from '../../network/login'
+
 export default {
-  name: 'Login'
+  name: 'Login',
+  mounted(){
+    this.userLogin()
+  },
+  methods: {
+    userLogin() {
+      let loginButton = document.getElementById('login_button')
+      let phoneValue = document.getElementById('phone')
+
+      loginButton.onclick = () => {
+        let phone = phoneValue.value
+        // console.log('---',phone.value)
+        login(phone).then(res => {
+          if(res.data){
+            this.$toast.show('登录成功',1500)
+            setTimeout(() => {
+              //在localStorage存储用来识别用户的phone和用户头像链接
+              localStorage.setItem('phone',phone)
+              localStorage.setItem('imgsrc',res.data.head_imgsrc)
+              //在vuex中，存储
+              this.$store.commit('changeIsLogin',window.localStorage.getItem('phone'))
+              this.$store.commit('changeImgsrc',res.data.head_imgsrc)
+              this.$router.push('/')
+            }, 2000);
+          }else {
+            this.$toast.show('登录失败',1500)
+          }
+        })
+      }
+    }
+  }
 }
 </script>
 

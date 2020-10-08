@@ -11,7 +11,7 @@
       <div class="desc">{{item.describes}}</div>
       <div class="phone">{{item.phone}}</div>
       <!-- <div class="nav">{{item.nav}}</div> -->
-      <img class=img :src="item.imgsrc?('http://localhost:3000/'+item.imgsrc):('')" alt="菜">
+      <img class=img :src="item.imgsrc?('http://localhost:3000/'+item.imgsrc):('')" alt="">
     </purchase-info-item>
     
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      console.log(this.info)
+      // console.log(this.info)
     }, 3000);
   },
   props: {

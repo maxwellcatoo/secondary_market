@@ -2,7 +2,7 @@
   <div>
     <div id="release">
       <h3>发布求购</h3>
-      <form action="http://localhost:3000/api/releasebuy" method="POST" enctype="multipart/form-data">
+      <form action="http://localhost:3000/api/release_buy" method="POST" enctype="multipart/form-data">
         <div class="title"><div>标题</div><input name="title" type="text" placeholder="很重要，让别人对你的需求一目了然"></div>
         <div class="easyInfo"><div>简介(可选)</div><textarea name="easyInfo" type="text" placeholder="让别人更清晰了解您的需求"></textarea></div>
         <!-- <div class="price"><div>可接受价格</div><input name="price" type="text" placeholder="数字或文字，可接受的价格，如'100-150'之间"></div> -->
@@ -13,7 +13,9 @@
         <div class="weichart"><div>微信</div><input name="wechart" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
         <div class="phone"><div>手机</div><input name="phone" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
         <div class="qq"><div>Q&nbsp;Q</div><input name="qq" type="text" placeholder="微信号，手机号，QQ至少填一项"></div>
+        
         <div class="imgonload" @click='imgload'><div>图片上传</div><div><input id="input" name="file" type="file"><img title="点击上传图片" src="" alt=""></div></div>
+
         <div class="submit"><input type="submit" value="提交"></div>
       </form>
     </div>

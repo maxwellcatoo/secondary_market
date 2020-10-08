@@ -1,8 +1,8 @@
 <template>
   <div>
     <div id="goods-list">
-      <goods-item v-for="(item,index) in goods" :key="index">
-        <img :src="item.imgurl?item.imgurl:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1704354617,2285391646&fm=26&gp=0.jpg'" alt="">
+      <goods-item id="goodsitem" :iid="item.goods_id" v-for="(item,index) in goods" :key="index">
+        <img :src="item.imgurl1?'http://localhost:3000/'+item.imgurl1:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1704354617,2285391646&fm=26&gp=0.jpg'" alt="">
         <div class="title">{{item.title}}</div>
         <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
         <div class="descri">{{item.describe}}</div>
@@ -40,7 +40,7 @@ export default {
     align-content: flex-start;
     flex-wrap: wrap;
   }
-  #goods-item {
+  #goodsitem {
     margin-top: 30px;
     width: 18.5%;
     height: auto;
@@ -52,12 +52,12 @@ export default {
     background-color: #fff;
   }
   
-  #goods-item>img {
+  #goodsitem img {
     border-radius: 10px 10px 0 0;
     width: 100%;
     transition: all 300ms ease;
   }
-  #goods-item>img:hover {
+  #goodsitem img:hover {
     transform: scale(1.1);
   }
   .title {

@@ -16,15 +16,16 @@
 
     <!-- 菜单栏右侧内容 -->
       <!-- 根据用户是否登录展示不同的内容 -->
-    <router-link v-if="!isLogin" to="/login" tag="div">
+    <router-link v-if="!$store.getters.getIsLoginState" to="/login" tag="div">
       <div path='/login' id="login">
         <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1666256797,972082711&fm=26&gp=0.jpg" alt="">
         <span>登录</span>
       </div>
     </router-link>
       <div v-else path='/user_info' id="user-info">
-        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1666256797,972082711&fm=26&gp=0.jpg" alt="">
-        <span>{{username}}</span>
+        <!-- <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1666256797,972082711&fm=26&gp=0.jpg" alt=""> -->
+        <img :src="'http://localhost:3000/'+$store.state.imgsrc" alt="菜">
+        <span>{{$store.getters.getLoginName}}</span>
         <div style="display:none" id="userbox">
           <router-link to="/user_info" tag="div">
             <div class="user-center">用户中心</div>
@@ -62,23 +63,45 @@ export default {
   },
   data() {
     return {
-      isLogin: true,//用户登录状态
-      username: 'maxwellcat'//用户名，暂存在这里，回头要存在vuex里的吧
     }
   },
+  // created() {
+  //   this.username = window.localStorage.getItem('phone')
+  //   this.isLogin = !!this.username
+  // },
   mounted() {
     // 页面加载完成后运行此函数
     this.releaseDl()
+    if(this.$store.getters.getIsLoginState){
+      this.userbox(),
+      this.loginOut()
+    }
+  },
+  updated() {
+    if(this.$store.getters.getIsLoginState){
+      this.userbox(),
+      this.loginOut()
+    }
   },
   methods: {
     //鼠标悬浮在发布上时，显现出分类发布内容，离开时继续隐藏
     releaseDl() {
       let releaseEl = document.getElementById('release')
       let releaseItem = document.getElementById('release-item')
+
+
+      releaseEl.onmouseover = () => {
+        releaseItem.style.display = 'block'
+      }
+      releaseEl.onmouseleave = () => {
+        releaseItem.style.display = 'none'
+      }
+    },
+    userbox() {
       let userInfo = document.getElementById('user-info')
       let userbox = document.getElementById('userbox')
-
       let userCenter = document.getElementsByClassName('user-center')
+
       //用户信息页状态
       userInfo.onmouseover = () => {
         userbox.style.display = 'block'
@@ -90,20 +113,13 @@ export default {
       userCenter[0].onclick = () => {
         userbox.style.display = 'none'
       }
-
-      releaseEl.onmouseover = () => {
-        releaseItem.style.display = 'block'
-      }
-      releaseEl.onmouseleave = () => {
-        releaseItem.style.display = 'none'
-      }
-      //用户退出登录
-      this.loginOut()
     },
     loginOut() {
       let loginOut = document.getElementsByClassName('login-out')
       loginOut[0].onclick = () => {
-        this.isLogin = false
+        window.localStorage.removeItem('phone')
+        window.localStorage.removeItem('imgsrc')
+        this.$store.commit('changeIsLogin',window.localStorage.getItem('phone'))
         this.$router.replace('/login')
       }
     }

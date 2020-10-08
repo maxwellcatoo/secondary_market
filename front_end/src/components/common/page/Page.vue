@@ -120,7 +120,7 @@ export default {
   #pages {
     margin: 100px auto 0;
     width: 70%;
-    height: 100px;
+    height: 80px;
     text-align: center;
   }
   .page-index,.pre,.next {

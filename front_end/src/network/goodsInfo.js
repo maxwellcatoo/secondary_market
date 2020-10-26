@@ -8,3 +8,12 @@ export function getGoodsInfo(goodsid) {
       }
     })
 }
+
+export function onloadComment(goodsid,phone,stars,component) {
+  return request({
+    url: '/upload_comment',
+    params: {
+      goodsid,phone,stars,component
+    }
+  })
+}

@@ -11,7 +11,7 @@
       <div class="desc">{{item.describes}}</div>
       <div class="phone">{{item.phone}}</div>
       <!-- <div class="nav">{{item.nav}}</div> -->
-      <img class=img :src="item.imgsrc?('http://localhost:3000/'+item.imgsrc):('')" alt="">
+      <img class=img :src="item.imgsrc?(baseHost+item.imgsrc):('')" alt="">
     </purchase-info-item>
     
   </div>
@@ -20,11 +20,14 @@
 <script>
 import PurchaseInfoItem from './PurchaseInfoItem'
 
+import {myMixin} from '../../../common/mixin'
+
 export default {
   name: 'PurchaseInfo',
   components: {
     PurchaseInfoItem
   },
+  mixins: [myMixin],
   mounted() {
     setTimeout(() => {
       // console.log(this.info)

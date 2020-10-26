@@ -55,13 +55,17 @@ router.post('/release_buy',onload.single('file'),async(req,res) => {
     path = (path + req.file.originalname).slice(7,)   //截取第七位往后的字符
     console.log(path)
   }
-  let user_id = 5
+  // let user_id = 5
   let describes = req.body.easyInfo
   let title = req.body.title
   // let price = req.body.price
   let wechart = req.body.wechart
   let qq = req.body.qq
   let phone = req.body.phone
+
+  let user_phone = req.body.user_phone
+  let sqlStr0 = 'select user_id from user where phone=?'
+  let user_id = (await sqlQuery(sqlStr0,[user_phone]))[0].user_id
 
   let sqlStr = 'insert into release_info (imgsrc,user_id,describes,title,phone,qq,wechart) values (?,?,?,?,?,?,?)'
   await sqlQuery(sqlStr,[path,user_id,describes,title,phone,qq,wechart])
@@ -80,7 +84,7 @@ router.post('/release_goods',goolsOnload.single('file'),async(req,res) => {
     path = (path + req.file.originalname).slice(7,)  //截取第七位往后的字符
     console.log(path)
   }
-  let user_id = 5 //先统一赋值为5
+  // let user_id = 5 //先统一赋值为5
   let describes = req.body.easyInfo
   let title = req.body.title
   let price = req.body.price
@@ -91,25 +95,54 @@ router.post('/release_goods',goolsOnload.single('file'),async(req,res) => {
   let wechart = req.body.wechart
   let qq = req.body.qq
   let phone = req.body.phone
+  let user_phone = req.body.user_phone
+  let sqlStr0 = 'select user_id from user where phone=?'
+  let user_id = (await sqlQuery(sqlStr0,[user_phone]))[0].user_id
+  // console.log(user_id)
 
-  let sqlStr = 'insert into goods (imgurl1,user_id,title,describes,price,old_price,classify_id,postage,phone,qq,wechart) values (?,?,?,?,?,?,?,?,?,?,?)'
+  let sqlStr = 'insert into goods (imgurl1,user_id,title,describes,price,old_price,classify_id,postage,phone,qq,wechart,date) values (?,?,?,?,?,?,?,?,?,?,?,now())'
   await sqlQuery(sqlStr,[path,user_id,title,describes,price,oldprice,classify,emailPrice,phone,qq,wechart])
   res.render('jump.ejs',{
 
   })
-  // location.assign()
-  
 })
 //商品详情页获取商品信息
 router.get('/good_info',async (req,res) => {
   let goodsid = req.query.goodsid
   // let sql = 'select * from goods where goods_id = ?'
-  let sql = 'select * from goods g inner join user u on g.goods_id=?'
+  let sql = 'select * from goods g inner join user u on g.goods_id=? and g.user_id = u.user_id'
   let result = await sqlQuery(sql,[goodsid])
-  let sql2 = 'select * from goods_comment as gc inner join user u on gc.goods_id = ?'
+  let sql2 = 'select * from goods_comment gc inner join user u on gc.goods_id=? and gc.user_id = u.user_id'
   let result2 = await sqlQuery(sql2,[goodsid])
+  // console.log(result2)
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.send({result,result2})
+})
+
+//商品评论提交
+router.get('/upload_comment',async (req,res) => {
+  let goodsid = req.query.goodsid //商品id
+  let phone = req.query.phone  //用户
+  let stars = req.query.stars  //评价星数
+  let component = req.query.component  //评价内容
+  let sql = 'select user_id from user where phone = ? '
+  let userid = (await sqlQuery(sql,[phone]))[0].user_id  //首先通过用户phone查询出用户id
+  let sql2 = 'insert into goods_comment (goods_id,user_id,date,content,score) values (?,?,now(),?,?)'
+  let result = await sqlQuery(sql2,[goodsid,userid,component,stars])  //将内容存储到数据库中
+
+  
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.send(result)
+})
+
+//商品浏览量变更
+router.get('/watch_times',async(req,res) => {
+  let goods_id = req.query.goods_id
+  let sql = 'update goods set watch_times=watch_times+1 where goods_id = ?'
+  await sqlQuery(sql,[goods_id])
+  
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.send(true)
 })
 
 module.exports = router

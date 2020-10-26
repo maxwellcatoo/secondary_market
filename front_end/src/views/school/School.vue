@@ -47,7 +47,7 @@ export default {
     width: 40px;
   }
   .in {
-    width: 300px;
+    width: 280px;
     height: 30px;
     border: 1px solid #ccc;
     border-radius: 3px;

@@ -2,7 +2,7 @@
   <div>
     <div id="release">
       <h3>发布商品</h3>
-      <form action="http://localhost:3000/api/release_goods" method="POST" enctype="multipart/form-data">
+      <form :action="baseHost+'api/release_goods'" method="POST" enctype="multipart/form-data">
         <div class="title"><div>标题</div><input name="title" type="text" placeholder="很重要，显示在列表页"></div>
         <div class="easyInfo"><div>简介</div><textarea type="text" name="easyInfo" placeholder="很重要，显示在商品详情页"></textarea></div>
         <div class="price"><div>标价</div><input name="price" type="text" placeholder="填入数字，想卖的价格"></div>
@@ -29,6 +29,7 @@
         <div class="imgonload" @click='imgload'><div>图片上传</div><div><input id="input" name="file" type="file"><img title="点击上传图片" src="" alt=""></div></div>
 
         <div class="submit"><input type="submit" value="提交"></div>
+        <input type="hidden" id="user_phone" name="user_phone">
 
 
       </form>
@@ -37,12 +38,18 @@
 </template>
 
 <script>
+import {myMixin} from '../../common/mixin'
+
   export default {
     name: "Release",
+    mixins: [myMixin],
     data() {
       return {
 
       }
+    },
+    mounted() {
+      document.getElementById('user_phone').value = localStorage.getItem('phone')
     },
     methods: {
       imgload() {

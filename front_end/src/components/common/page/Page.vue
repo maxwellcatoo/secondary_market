@@ -30,7 +30,10 @@ export default {
     }
   },
   mounted() {
-    // this.elipsis()
+    this.$bus.$on('turnPageToOne',() => {
+        this.pageIndex = 0
+        this.turnPage()
+      })
   },
   updated() {
     this.pageDl()

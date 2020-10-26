@@ -2,9 +2,9 @@
   <div>
     <div id="goods-list">
       <goods-item id="goodsitem" :iid="item.goods_id" v-for="(item,index) in goods" :key="index">
-        <img :src="item.imgurl1?'http://localhost:3000/'+item.imgurl1:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1704354617,2285391646&fm=26&gp=0.jpg'" alt="">
+        <img :src="item.imgurl1?baseHost+item.imgurl1:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1704354617,2285391646&fm=26&gp=0.jpg'" alt="">
         <div class="title">{{item.title}}</div>
-        <div class="date"><div>{{item.update}}</div><div>1000人浏览</div></div>
+        <div class="date"><div>{{item.date | dateTime}}</div><div>{{item.watch_times}}人浏览</div></div>
         <div class="descri">{{item.describe}}</div>
         <div class="price"><div>￥{{item.price}}</div><div>{{item.school}}</div></div>
       </goods-item>
@@ -14,15 +14,31 @@
 
 <script>
 import GoodsItem from './GoodsItem'
+import {myMixin} from '../../../common/mixin'
 
 export default {
   name: 'GoodsList',
   components: {
     GoodsItem
   },
+  mixins: [myMixin],
   data() {
     return {
-      
+      // goodListInfo: []
+    }
+  },
+  watch: {
+      // goods (val){
+      //   this.goods = val.
+      // }
+  },
+  methods: {
+  },
+  filters: {
+    dateTime(date){
+      if(date){
+        return date.slice(0,10)
+      }
     }
   },
   props: {

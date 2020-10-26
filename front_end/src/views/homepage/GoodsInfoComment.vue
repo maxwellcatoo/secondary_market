@@ -1,13 +1,13 @@
 <template>
   <div id="GoodsInfoComment">
     <div class="box">
-      <div><img :src="comment.head_imgsrc?comment.head_imgsrc:item.imgsrc" alt=""></div>
+      <div><img :src="comment.head_imgsrc?baseHost+comment.head_imgsrc:item.imgsrc" alt=""></div>
       <div class="box_left">
         <div>{{comment.username}}</div>
         <div>{{comment.date}}</div>
       </div>
       <div class="box_right">
-        <div>{{comment.score}}星</div>
+        <comment-star :stars="Number(comment.score)"></comment-star>
         <div>{{comment.content}}</div>
       </div>
     </div>
@@ -15,17 +15,23 @@
 </template>
 
 <script>
+import CommentStar from './CommentStar'
+import {myMixin} from '../../common/mixin'
+
 export default {
   name: 'GoodsInfoComment',
+  components: {
+    CommentStar
+  },
+  mixins: [myMixin],
   data() {
     return {
       item: {
-        imgsrc: 'https://api.youzixy.com/public/uploads/avatar/default8.png'
+        imgsrc: 'https://api.youzixy.com/public/uploads/avatar/default8.png'  //用户头像不存在时，使用该默认连接头像
       }
     }
   },
   mounted() {
-    // console.log(this.comment)
     this.comment.date = this.comment.date.toString().slice(0,10)
   },
   props: {
@@ -60,5 +66,8 @@ export default {
   }
   .box_right>div:last-child {
     color: #333;
+  }
+  .star {
+    display: inline-block;
   }
 </style>

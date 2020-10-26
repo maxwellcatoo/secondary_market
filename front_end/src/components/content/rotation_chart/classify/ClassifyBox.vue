@@ -37,8 +37,9 @@ export default {
   methods: {
     //将分类数据中的classifyInfo.classifyid和classifyInfo.data.classifyid拼接起来
     setClassifyBoxId(a,b) {
-      this.$bus.$emit('getClassifyId',a+b)
-      console.log(a+b)
+      this.$bus.$emit('getClassifyId',a+b)  //将分类id传送到主页，更新显现的商品
+      this.$bus.$emit('turnPageToOne')  //每次点击分类id，都重新将page页调整至第一页
+      // console.log(a+b)
       // this.$store.commit('getClassifyId',{a,b})
     }
   }

@@ -17,7 +17,8 @@ export default {
   name: 'OrderType',
   data() {
     return {
-      currentIndex: 0,
+      currentIndex: 0,  //记录被点击的项的序数
+      orderRule: 0, //记录是正序还是倒序
       orderTypeItem: [{value:'时间',order:true},{value:'价格',order:true},{value:'浏览量',order:true}]
     }
   },
@@ -32,12 +33,30 @@ export default {
         item.onclick=() => {
           if(this.currentIndex === index){
             this.orderTypeItem[index].order = !this.orderTypeItem[index].order
+            //通过判断this.orderTypeItem[index].order的true或false获取到箭头的指向
+            if(this.orderTypeItem[index].order){
+              //为true，指向向下，为正序(时间、浏览量降序，价格升序)
+              this.orderRule = 0
+            }else{
+              this.orderRule = 1  //时间、浏览量升序，价格降序
+            }
           }
+          
+          //更新排序方式，将新的排序方式发送至homepage页
+          let rule = index.toString() + this.orderRule.toString()
+          this.$bus.$emit('orderRuleTransmit',rule)
+
+          //每次更换排序方式，都重新将page页调整至第一页
+          this.$bus.$emit('turnPageToOne')  
+          // console.log(rule)
+
           //点击一个时，其他的排序方式变为箭头向下
           let next = index+1>2?index-2:index+1
           let pre = index-1<0?index+2:index-1
           this.orderTypeItem[pre].order = true
           this.orderTypeItem[next].order = true
+
+          this.orderRule = 0  //项目第一次被点击都需要是0,所以当项目为未被选中状态，均设置为0
 
           this.currentIndex = index
         }

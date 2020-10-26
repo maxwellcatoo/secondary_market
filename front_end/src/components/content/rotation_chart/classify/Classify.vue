@@ -37,109 +37,110 @@ export default {
           ]
           },
       
-      {title:'书籍教材',classifyid: '1',
-        data:[
-          {title:'教科书',imgsrc:"book/teachbook.jpg",classifyid: '1'},
-          {title:'文学',imgsrc:"book/literature.jpg",classifyid: '2'},
-          {title:'小说',imgsrc:"book/novel.jpg",classifyid: '3'},
-          {title:'电子书',imgsrc:"book/ebook.png",classifyid: '4'},
-          {title:'教育考试',imgsrc:"book/test.jpg",classifyid: '5'},
-          {title:'动漫',imgsrc:"book/comic.jpg",classifyid: '6'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '7'},
-          ]},
-      
-      {title:'衣鞋帽伞',classifyid: '2',
-        data:[
-          {title:'裙子',imgsrc:"shoes/skirt.jpg",classifyid: '1'},
-          {title:'裤子',imgsrc:"shoes/pants.jpg",classifyid: '2'},
-          {title:'衣服',imgsrc:"shoes/clothes.jpg",classifyid: '3'},
-          {title:'帽子',imgsrc:"shoes/hat.jpg",classifyid: '4'},
-          {title:'鞋子',imgsrc:"shoes/shoes.jpg",classifyid: '5'},
-          {title:'箱子',imgsrc:"shoes/box.jpg",classifyid: '6'},
-          {title:'包包',imgsrc:"shoes/package.jpg",classifyid: '7'},
-          {title:'雨伞',imgsrc:"shoes/umbrella.jpg",classifyid: '8'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '9'},
-          ]},
-      
-      {title:'代步工具',classifyid: '3',
-        data:[
-          {title:'自行车',imgsrc:"walking_tool/bicycle.jpg",classifyid: '1'},
-          {title:'旱冰鞋',imgsrc:"walking_tool/skates.jpg",classifyid: '2'},
-          {title:'平衡车',imgsrc:"walking_tool/balance_car.jpg",classifyid: '3'},
-          {title:'滑板',imgsrc:"walking_tool/skate.jpg",classifyid: '4'},
-          {title:'摩托车',imgsrc:"walking_tool/motorcycle.jpg",classifyid: '5'},
-          {title:'电动车',imgsrc:"walking_tool/electric_vehicle.jpg",classifyid: '6'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
-          ]},
-      
-      {title:'体育健身',classifyid: '4',
-        data:[
-          {title:'球类',imgsrc:"sports/ball.jpg",classifyid: '1'},
-          {title:'球拍',imgsrc:"sports/racket.jpg",classifyid: '2'},
-          {title:'运动鞋',imgsrc:"sports/sports_shoes.jpg",classifyid: '3'},
-          {title:'运动装备',imgsrc:"sports/sports_equipment.jpg",classifyid: '4'},
-          {title:'健身器材',imgsrc:"sports/body_building.jpg",classifyid: '5'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '6'},
-          ]},
-      
-      {title:'家用电器',classifyid: '5',
-        data:[
-          {title:'电磁炉',imgsrc:"electric_appliance/electromagnetic_furnace.jpg",classifyid: '1'},
-          {title:'洗衣机',imgsrc:"electric_appliance/washing_machine.jpg",classifyid: '2'},
-          {title:'冰箱',imgsrc:"electric_appliance/icebox.jpg",classifyid: '3'},
-          {title:'风扇',imgsrc:"electric_appliance/fan.jpg",classifyid: '4'},
-          {title:'电饭煲',imgsrc:"electric_appliance/race_cooker.jpg",classifyid: '5'},
-          {title:'豆浆机',imgsrc:"electric_appliance/milk_machine.jpg",classifyid: '6'},
-          {title:'电吹风',imgsrc:"electric_appliance/hair_direr.jpg",classifyid: '7'},
-          {title:'音响',imgsrc:"electric_appliance/sound.jpg",classifyid: '8'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
-          
-          ]},
-      
-      {title:'日常用品',classifyid: '6',
-        data:[
-          {title:'化妆护肤',imgsrc:"life_user/cosmetics.jpg",classifyid: '1'},
-          {title:'小工具',imgsrc:"life_user/small_tools.jpg",classifyid: '2'},
-          {title:'学习用品',imgsrc:"life_user/study.jpg",classifyid: '3'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '4'},
-          ]},
-      
-      {title:'虚拟产品',classifyid: '7',
-        data:[
-          {title:'游戏周边',imgsrc:"fictitious/game_arounds.jpg",classifyid: '1'},
-          {title:'充值卡',imgsrc:"fictitious/card.jpg",classifyid: '2'},
-          {title:'各类账号',imgsrc:"fictitious/username.jpg",classifyid: '3'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '4'},
-          ]},
-      
-      {title:'手工设计',classifyid: '8',
-        data:[
-          {title:'书法',imgsrc:"manual/calligraphy.jpg",classifyid: '1'},
-          {title:'绘画',imgsrc:"manual/painting.jpg",classifyid: '2'},
-          {title:'工艺品',imgsrc:"manual/atrs_and_crfts.jpg",classifyid: '3'},
-          {title:'服装设计',imgsrc:"manual/clothing_design.jpg",classifyid: '4'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: '5'},
-          ]},
-      
-      {title:'乐器',classifyid: '9',
-        data:[
-          {title:'吉他',imgsrc:"musical_instruments/guitor.jpg",classifyid: '1'},
-          {title:'钢琴',imgsrc:"musical_instruments/piano.jpg",classifyid: '2'},
-          {title:'尤克里里',imgsrc:"musical_instruments/eurico.jpg",classifyid: '3'},
-          {title:'民族管弦',imgsrc:"musical_instruments/erhu.jpg",classifyid: '4'},
-          {title:'西洋管弦',imgsrc:"musical_instruments/west_erhu.jpg",classifyid: '5'},
-          {title:'打击乐器',imgsrc:"musical_instruments/drum_kit.jpg",classifyid: '6'},
-          {title:'乐器配件',imgsrc:"musical_instruments/musical_acc.jpg",classifyid: '7'},
-          {title:'电脑音乐',imgsrc:"musical_instruments/computer_music.jpg",classifyid: '8'},
-          {title:'口琴/竖笛',imgsrc:"musical_instruments/harmonica.jpg",classifyid: '9'},
-          {title:'电子琴',imgsrc:"musical_instruments/electronic_organ.jpg",classifyid: 'a'},
-          {title:'其他',imgsrc:"shuma/others.png",classifyid: 'b'},
-          ]},
-      
-      {title:'其他',classifyid: 'a',
-        data:[{title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
-          ]
-      }],
+        {title:'书籍教材',classifyid: '1',
+          data:[
+            {title:'教科书',imgsrc:"book/teachbook.jpg",classifyid: '1'},
+            {title:'文学',imgsrc:"book/literature.jpg",classifyid: '2'},
+            {title:'小说',imgsrc:"book/novel.jpg",classifyid: '3'},
+            {title:'电子书',imgsrc:"book/ebook.png",classifyid: '4'},
+            {title:'教育考试',imgsrc:"book/test.jpg",classifyid: '5'},
+            {title:'动漫',imgsrc:"book/comic.jpg",classifyid: '6'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '7'},
+            ]},
+        
+        {title:'衣鞋帽伞',classifyid: '2',
+          data:[
+            {title:'裙子',imgsrc:"shoes/skirt.jpg",classifyid: '1'},
+            {title:'裤子',imgsrc:"shoes/pants.jpg",classifyid: '2'},
+            {title:'衣服',imgsrc:"shoes/clothes.jpg",classifyid: '3'},
+            {title:'帽子',imgsrc:"shoes/hat.jpg",classifyid: '4'},
+            {title:'鞋子',imgsrc:"shoes/shoes.jpg",classifyid: '5'},
+            {title:'箱子',imgsrc:"shoes/box.jpg",classifyid: '6'},
+            {title:'包包',imgsrc:"shoes/package.jpg",classifyid: '7'},
+            {title:'雨伞',imgsrc:"shoes/umbrella.jpg",classifyid: '8'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '9'},
+            ]},
+        
+        {title:'代步工具',classifyid: '3',
+          data:[
+            {title:'自行车',imgsrc:"walking_tool/bicycle.jpg",classifyid: '1'},
+            {title:'旱冰鞋',imgsrc:"walking_tool/skates.jpg",classifyid: '2'},
+            {title:'平衡车',imgsrc:"walking_tool/balance_car.jpg",classifyid: '3'},
+            {title:'滑板',imgsrc:"walking_tool/skate.jpg",classifyid: '4'},
+            {title:'摩托车',imgsrc:"walking_tool/motorcycle.jpg",classifyid: '5'},
+            {title:'电动车',imgsrc:"walking_tool/electric_vehicle.jpg",classifyid: '6'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
+            ]},
+        
+        {title:'体育健身',classifyid: '4',
+          data:[
+            {title:'球类',imgsrc:"sports/ball.jpg",classifyid: '1'},
+            {title:'球拍',imgsrc:"sports/racket.jpg",classifyid: '2'},
+            {title:'运动鞋',imgsrc:"sports/sports_shoes.jpg",classifyid: '3'},
+            {title:'运动装备',imgsrc:"sports/sports_equipment.jpg",classifyid: '4'},
+            {title:'健身器材',imgsrc:"sports/body_building.jpg",classifyid: '5'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '6'},
+            ]},
+        
+        {title:'家用电器',classifyid: '5',
+          data:[
+            {title:'电磁炉',imgsrc:"electric_appliance/electromagnetic_furnace.jpg",classifyid: '1'},
+            {title:'洗衣机',imgsrc:"electric_appliance/washing_machine.jpg",classifyid: '2'},
+            {title:'冰箱',imgsrc:"electric_appliance/icebox.jpg",classifyid: '3'},
+            {title:'风扇',imgsrc:"electric_appliance/fan.jpg",classifyid: '4'},
+            {title:'电饭煲',imgsrc:"electric_appliance/race_cooker.jpg",classifyid: '5'},
+            {title:'豆浆机',imgsrc:"electric_appliance/milk_machine.jpg",classifyid: '6'},
+            {title:'电吹风',imgsrc:"electric_appliance/hair_direr.jpg",classifyid: '7'},
+            {title:'音响',imgsrc:"electric_appliance/sound.jpg",classifyid: '8'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
+            
+            ]},
+        
+        {title:'日常用品',classifyid: '6',
+          data:[
+            {title:'化妆护肤',imgsrc:"life_user/cosmetics.jpg",classifyid: '1'},
+            {title:'小工具',imgsrc:"life_user/small_tools.jpg",classifyid: '2'},
+            {title:'学习用品',imgsrc:"life_user/study.jpg",classifyid: '3'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '4'},
+            ]},
+        
+        {title:'虚拟产品',classifyid: '7',
+          data:[
+            {title:'游戏周边',imgsrc:"fictitious/game_arounds.jpg",classifyid: '1'},
+            {title:'充值卡',imgsrc:"fictitious/card.jpg",classifyid: '2'},
+            {title:'各类账号',imgsrc:"fictitious/username.jpg",classifyid: '3'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '4'},
+            ]},
+        
+        {title:'手工设计',classifyid: '8',
+          data:[
+            {title:'书法',imgsrc:"manual/calligraphy.jpg",classifyid: '1'},
+            {title:'绘画',imgsrc:"manual/painting.jpg",classifyid: '2'},
+            {title:'工艺品',imgsrc:"manual/atrs_and_crfts.jpg",classifyid: '3'},
+            {title:'服装设计',imgsrc:"manual/clothing_design.jpg",classifyid: '4'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: '5'},
+            ]},
+        
+        {title:'乐器',classifyid: '9',
+          data:[
+            {title:'吉他',imgsrc:"musical_instruments/guitor.jpg",classifyid: '1'},
+            {title:'钢琴',imgsrc:"musical_instruments/piano.jpg",classifyid: '2'},
+            {title:'尤克里里',imgsrc:"musical_instruments/eurico.jpg",classifyid: '3'},
+            {title:'民族管弦',imgsrc:"musical_instruments/erhu.jpg",classifyid: '4'},
+            {title:'西洋管弦',imgsrc:"musical_instruments/west_erhu.jpg",classifyid: '5'},
+            {title:'打击乐器',imgsrc:"musical_instruments/drum_kit.jpg",classifyid: '6'},
+            {title:'乐器配件',imgsrc:"musical_instruments/musical_acc.jpg",classifyid: '7'},
+            {title:'电脑音乐',imgsrc:"musical_instruments/computer_music.jpg",classifyid: '8'},
+            {title:'口琴/竖笛',imgsrc:"musical_instruments/harmonica.jpg",classifyid: '9'},
+            {title:'电子琴',imgsrc:"musical_instruments/electronic_organ.jpg",classifyid: 'a'},
+            {title:'其他',imgsrc:"shuma/others.png",classifyid: 'b'},
+            ]},
+        
+        {title:'其他',classifyid: 'a',
+          data:[{title:'其他',imgsrc:"shuma/others.png",classifyid: '1'},
+            ]
+        }
+      ],
       classifyIndex: 0,
     }
   },

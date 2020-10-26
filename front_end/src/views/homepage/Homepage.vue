@@ -3,7 +3,7 @@
     <div id="content-header">
       <home-rotation></home-rotation>
       <goods-list :goods='goodsDataToList'></goods-list>
-      <pages v-show="isLogin" @turnPage=turnPage :pageCounts='pageCounts'></pages>
+      <pages @turnPage=turnPage :pageCounts='pageCounts'></pages>
     </div>
   </div>
 </template>
@@ -22,46 +22,57 @@
     },
     data() {
       return {
-        isLogin: false,
-        goodsData: [], //页面加载时获取所有数据
-        goodsDataTransmit: [], //经挑选后发送到子组件中goodslist中的数据
+        goodsData: [], //页面加载时获取所有数据，用来给goodsDataTransmit提供所有数据
+
+        goodsDataTransmit: [], //主要用来存储当前分类下的商品数据，未点击商品分类时为所有商品
+
+        goodsDataTransmitSort: [], //排好序的要发到组件goodslist中的数据
+
         goodsDataCount: 0, //发送到子组件中的数据个数
         pageCounts: 0, //页数
         pageStart: 0, //所在页的开始数据属于第几条数据
-        pageItems: 2, //每一页包含多少数据
-        classifyId: ''
+        pageItems: 10, //每一页包含多少数据
+        classifyId: '', //商品分类id
       }
     },
     created() {
       this.getGoodsData()
     },
     mounted() {
+      //点击分类查询时，触发
       this.$bus.$on('getClassifyId',(classid) => {
-        console.log(classid)
-        this.getGoodsDataTransformit(classid)
+      // console.log(classid)
+      this.getGoodsDataTransformit(classid)
+      })
+      //点击排序方式后，触发该函数
+      this.$bus.$on('orderRuleTransmit',(rule) => {
+      // console.log(typeof(rule))
+      this.goodsDataTransmitSort = this.goodsDataTransmit.sort(this.orderRuleSort(rule))
+      // console.log(this.goodsDataTransmit)
       })
     },
     computed: {
       goodsDataToList() {
-        return this.goodsDataTransmit.slice(this.pageStart,this.pageStart + this.pageItems)
+        return this.goodsDataTransmitSort.slice(this.pageStart,this.pageStart + this.pageItems)
       },
-      // pageCountsToPages() {
-      //   return this.pageCounts
-      // }
     },
     methods: {
       //1.（方法）创建页面时将数据存储到data中
       getGoodsData() {
         //通过后台接口访问数据
         getHomepage().then(res => {
+          // console.log(typeof(res.data[0].price))
+          res.data.reverse()
           this.goodsData = res.data
-          this.goodsDataTransmit = res.data
+          this.goodsDataTransmit = res.data //
+
+          this.goodsDataTransmitSort = res.data  //初次加载并没有点击排序方式，且初次的排序方式和默认排序方式相同，所以在这里给排好序要传给goodslist组件的goodsDataTransmitSort赋值
+
           this.goodsDataCount = res.data.length //总数据数，用来计算页数
           this.pageCounts = Math.ceil(this.goodsDataCount/this.pageItems) //页数,取的ceil，这个数是真实等于页数的
           // console.log(res.data.length)
           
           // this.$store.commit('getClassData',res.data)
-          this.isLogin = true
         })
       },
       //2.(方法)处理要发送给goodslist组件的数据
@@ -82,6 +93,31 @@
       //page组件点击翻页后触发该事件，修改pagestart数据，从而调整传递给goodslist的数据
       turnPage(page) {
         this.pageStart = page * this.pageItems
+      },
+      //给sort排序判断条件
+      orderRuleSort(rule){
+        return function(a,b){
+          switch(rule) {
+            case '00':
+              return Date.parse(b.date) - Date.parse(a.date)
+              // break;
+            case '01':
+              return Date.parse(a.date) - Date.parse(b.date)
+              // break;
+            case '10':
+              return a.price - b.price
+              // break;
+            case '11':
+              return b.price - a.price
+              // break;
+            case '20':
+              return b.watch_times - a.watch_times
+              // break;
+            case '21':
+              return a.watch_times - b.watch_times
+              // break;
+          }
+        }
       }
     }
   };

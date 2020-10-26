@@ -24,7 +24,7 @@
     </router-link>
       <div v-else path='/user_info' id="user-info">
         <!-- <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1666256797,972082711&fm=26&gp=0.jpg" alt=""> -->
-        <img :src="'http://localhost:3000/'+$store.state.imgsrc" alt="菜">
+        <img :src="baseHost+$store.state.imgsrc" alt="菜">
         <span>{{$store.getters.getLoginName}}</span>
         <div style="display:none" id="userbox">
           <router-link to="/user_info" tag="div">
@@ -56,11 +56,14 @@
 
 <script>
 import MenuItem from './MenuItem'
+import {myMixin} from '../../../common/mixin'
+
 export default {
   name: 'MenuBar',
   components: {
     MenuItem
   },
+  mixins: [myMixin],
   data() {
     return {
     }
